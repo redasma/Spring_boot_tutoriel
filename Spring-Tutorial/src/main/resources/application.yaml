@@ -1,0 +1,47 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+            driver-class-name: com.mysql.jdbc.Driver
+            password: admin
+            url: jdbc:mysql://localhost:3306/schooljpa
+            username: root
+  jpa:
+            hibernate:
+              ddl-auto: update
+            show-sql: true
+welcome:
+  message: Welcome to red's spring Test
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+---
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: admin
+      url: jdbc:mysql://localhost:3306/dcbapp-dqa
+      username: root
+  jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+  config:
+    activate:
+      on-profile: dqa
+welcome:
+    message: Welcome to red's spring Test
